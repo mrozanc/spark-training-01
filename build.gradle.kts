@@ -27,8 +27,9 @@ tasks {
         workingDir(project.projectDir)
         commandLine(
             "docker",
-            "buildx",
             "build",
+            "--build-arg",
+            "app_version=${project.version}",
             "-t",
             "wtskayansparkall:${project.version}",
             project.layout.projectDirectory.toString()
