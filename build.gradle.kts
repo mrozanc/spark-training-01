@@ -18,7 +18,32 @@ dependencies {
 }
 
 tasks {
-    test {
+    named<Test>("test") {
         useJUnitPlatform()
+    }
+    register<Exec>("dockerBuild") {
+        group = "docker"
+        dependsOn("jar")
+        workingDir(project.projectDir)
+        commandLine(
+            "docker",
+            "buildx",
+            "build",
+            "-t",
+            "wtskayansparkall:${project.version}",
+            project.layout.projectDirectory.toString()
+        )
+    }
+    register<Exec>("dockerRun") {
+        group = "docker"
+        dependsOn("dockerBuild")
+        workingDir(project.projectDir)
+        commandLine(
+            "docker",
+            "run",
+            "-v",
+            "${project.layout.projectDirectory.asFile.absolutePath}/src/data:/prd/project/datalake",
+            "wtskayansparkall:${project.version}"
+        )
     }
 }
