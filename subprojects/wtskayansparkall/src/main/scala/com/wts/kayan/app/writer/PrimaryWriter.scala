@@ -1,7 +1,7 @@
 package com.wts.kayan.app.writer
 
 import com.wts.kayan.app.utility.PrimaryUtilities
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.DataFrame
 import org.slf4j.LoggerFactory
 
 /**

@@ -1,8 +1,7 @@
 package com.wts.kayan.app.reader
 
-import com.typesafe.config.Config
-import com.wts.kayan.app.utility.{SchemaSelector, PrimaryConstants}
 import com.wts.kayan.app.utility.PrimaryUtilities.readDataFrame
+import com.wts.kayan.app.utility.{PrimaryConstants, SchemaSelector}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 /**

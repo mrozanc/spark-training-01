@@ -1,7 +1,5 @@
 package com.wts.kayan.app.job
 
-import com.wts.kayan.app.utility.PrimaryUtilities.getHdfsReader
-import com.typesafe.config.ConfigFactory
 import com.wts.kayan.SessionManager.SparkSessionManager
 import com.wts.kayan.app.common.PrimaryRunner
 import com.wts.kayan.app.reader.PrimaryReader

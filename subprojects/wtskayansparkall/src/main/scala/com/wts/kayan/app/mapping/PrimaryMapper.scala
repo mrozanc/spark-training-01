@@ -1,6 +1,5 @@
 package com.wts.kayan.app.mapping
 
-import PrimaryView._
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 /**
