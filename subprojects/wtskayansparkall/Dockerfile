@@ -1,6 +1,6 @@
 FROM spark:3.5.5-scala2.12-java17-python3-ubuntu
 
-ARG app_version
+ARG jar_path
 
 WORKDIR /wytasoft_training_academy
 
@@ -9,7 +9,7 @@ ENV SPARK_HOME=/opt/spark
 ENV PATH=$SPARK_HOME/bin:$PATH
 
 # Copy the Spark application JAR file to the container
-COPY "./build/libs/wtskayansparkall-${app_version}.jar" /wytasoft_training_academy/my-spark-app.jar
+COPY "${jar_path}" /wytasoft_training_academy/my-spark-app.jar
 
 RUN mkdir -p /tmp/spark-events
 

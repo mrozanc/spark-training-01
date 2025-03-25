@@ -1,3 +1,6 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import java.nio.file.Paths
+
 plugins {
     `spark-conventions`
 }
@@ -21,15 +24,20 @@ tasks {
     named<Test>("test") {
         useJUnitPlatform()
     }
+    val shadowJar = named<ShadowJar>("shadowJar")
     register<Exec>("dockerBuild") {
         group = "docker"
-        dependsOn("jar")
+        dependsOn(shadowJar)
         workingDir(project.projectDir)
         commandLine(
             "docker",
             "build",
             "--build-arg",
-            "app_version=${project.version}",
+            "jar_path=${
+                project.projectDir.toPath()
+                    .relativize(Paths.get(shadowJar.get().outputs.files.singleFile.path))
+                    .toString().replace('\\', '/')
+            }",
             "-t",
             "${project.name}:${project.version}",
             project.layout.projectDirectory.toString()
