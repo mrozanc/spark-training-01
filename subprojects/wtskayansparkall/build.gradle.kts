@@ -1,6 +1,5 @@
 plugins {
     `spark-conventions`
-    application
 }
 
 scala {
@@ -16,10 +15,6 @@ dependencies {
 
     testImplementation(platform("org.junit:junit-bom:5.11.4"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-}
-
-application {
-    mainClass = "com.wts.kayan.app.job.MainDriver"
 }
 
 tasks {
