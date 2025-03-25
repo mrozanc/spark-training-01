@@ -43,6 +43,7 @@ tasks {
         group = "spark"
         from(tarTree(downloadSparkDist.map { it.dest })) {
             include("*/**")
+            includeEmptyDirs = false
             eachFile {
                 relativePath = RelativePath(!isDirectory(), *relativePath.segments.drop(1).toTypedArray())
             }
